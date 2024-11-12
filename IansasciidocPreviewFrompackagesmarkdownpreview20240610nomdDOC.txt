@@ -1,0 +1,5 @@
+FROM pulsar-edit pulsar master packages-iansasciidoc-previewfrompackagesmarkdownpreview20240610withmd20240610 20240727
+
+Rename: IansasciidocPreviewFrompackagesmarkdownpreview20240610withmd 20240727
+  experiment wi keeping everything in pqckage 'iansasciidoc-previewfrompackagesmarkdownpreview20240610withmd' but changing name
+ 

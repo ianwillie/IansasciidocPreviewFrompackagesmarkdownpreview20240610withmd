@@ -1,0 +1,11 @@
+Created from IansasciidocPreviewFrompackagesmarkdownpreview20240610nomd
+  IansasciidocPreviewFrompackagesmarkdownpreview20240610nomd copied to IansasciidocPreviewFrompackagesmarkdownpreview20240610withmd using Dolphin.
+    then opened as a Kate project 
+      All occ of ...2024061nomd  changed to 2024061withmd  EXCEPT .ORIG and .DOC type files that came from original versions of preview-markdown pulsar builtin package.
+      SAVE to BackInTime BITi
+      
+TODO
+  create a link in .pulsar/packages to this 2024061withmd directory and check that it works 
+    Extensively test it to check it works
+  
+    then edit the original 2024061nomd  which still contained md stuff so that it really was nomd and md unique stuff was removed.
