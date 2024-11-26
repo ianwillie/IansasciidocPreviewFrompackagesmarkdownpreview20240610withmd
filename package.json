@@ -26,6 +26,8 @@
     "yaml-front-matter": "^4.1.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.253.0",
+    "node-pandoc": "^0.3.0",
     "temp": "^0.8.1"
   },
   "deserializers": {
