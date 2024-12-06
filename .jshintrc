@@ -1,0 +1,6 @@
+// cf https://github.com/jshint/jshint/blob/main/examples/.jshintrc
+{
+  "esversion": 9,
+  "asi": true,
+  "expr"          : false
+}
