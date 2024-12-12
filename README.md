@@ -9,18 +9,39 @@ asciidoc-assistant: install Atom AsciiDoc basic packages with one package.
 
 Add this to config.cson under core. It ensures that adoc & asciidoc files are treated as text not as YAML type files:
 core:
+
+```
   customFileTypes:
     "text.plain": [
       "adoc"
       "asciidoc"
     ]
+```
 
 ## What does work
-ctrl-alt-shft-c will preview adoc type file - at the moment these have to be changed to .XXX cos .adoc & .ad files are blocked from somewhere in the original markdown-preview.
-ctrl-alt-shft-g (cursor in adoc source pane) will render the file in external falkon browser.
-ctrl-alt-shft-s will save files as pdf and preview and render this file in pulsar..
-ctrl-shft-s will save as html and show this source file in pulsar. Using node asciidoctor-web-pdf.js. (Also tried to run
+
+```ctrl-alt-shft-c``` will preview adoc type file   
+```ctrl-alt-shft-g``` (cursor in adoc source pane) will render the file in external falkon browser.
+```ctrl-alt-shft-s``` will save files as pdf and preview and render this file in pulsar..
+```ctrl-shft-s``` will save as html and show this source file in pulsar. Using node asciidoctor-web-pdf.js. (Also tried to run
 asciidoctor-pdf.rb but this fails wi no output.
+
+## Previewing markdown files.
+  With cursor in an ordinary md file ```ctrl-alt-shft-c``` will preview as original pulsar markdown-preview github flavour.
+
+   If a single one of the codes exactly listed below is placed on a single line then ```ctrl-alt-shft-c``` will run pandoc for that md flavour.
+
+  ``` ::choosePandocMdFlavour:markdown: (Pandoc version) ```
+
+   ``` ::choosePandocMdFlavour:markdown_strict:``` (Pandoc version lss extensions for Gruber's original, Markdown.pl)
+   ``` ::choosePandocMdFlavour:markdown_phpextra: ``` (PHP Markdown Extra)  
+   ``` ::choosePandocMdFlavour:markdown_mmd: ``` (MultiMarkdown)   
+   ``` ::choosePandocMdFlavour:commonmark: ``` (CommonMark)  
+   ``` ::choosePandocMdFlavour:commonmark_x: ```  (CommonMark with many pandoc extensions)
+   ``` ::choosePandocMdFlavour:gfm: ``` (Github-Flavored Markdown)
+   ``` ::choosePandocMdFlavour:markdown_github: ``` (deprecated GitHub-Flavored Markdown)
+
+
 
 ## What does not work
 Infront matter :backend:  is unlikely to work cost backends are written in ruby & js versions needed.
