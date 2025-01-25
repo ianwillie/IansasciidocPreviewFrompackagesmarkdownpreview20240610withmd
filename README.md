@@ -1,9 +1,9 @@
 # Iansasciidoc Previewfrompackagesmarkdownpreview20240610withmd package
 
-Ians adaption of markdown-preview to preview asciidoc files.
+Ians adaption of markdown-preview to preview asciidoc files. Additionally it will preview additional flavours of markdown by identifying them with a simple code in the front matter of the file being edited.
 
 **Be sure to disable** atom-language-asciidoctor which is an atom package. It does some strange things, for example, if it is enabled may package will no longer open files with extensions: .txt, .adoc and possibly others occassionally like .ron.
-Others Atom packages for AsciiDoc should not be enables including: language-asciidoc,: Syntax highlighting and snippets for AsciiDoc & autocomplete-asciidoc. asciidoc-preview: Show an preview for the AsciiDoc has been fixed and should be OK but it is hoped that the current pacakage will replace that and be more resillient to changes in pulsar and its dependencies.
+Others Atom packages for AsciiDoc should not be enables including: language-asciidoc,: Syntax highlighting and snippets for AsciiDoc & autocomplete-asciidoc. asciidoc-preview: Show a preview for the AsciiDoc has been fixed and should be OK but it is hoped that the current pacakage will replace that and be more resillient to changes in pulsar and its dependencies.
 asciidoc-image-helper: When pasting an image into an Asciidoc document, this package will paste clipboard image data as a file into a folder specified by the user.
 asciidoc-assistant: install Atom AsciiDoc basic packages with one package.
 
@@ -31,9 +31,8 @@ asciidoctor-pdf.rb but this fails wi no output.
 
    If a single one of the codes exactly listed below is placed on a single line then ```ctrl-alt-shft-c``` will run pandoc for that md flavour.
 
-  ``` ::choosePandocMdFlavour:markdown: (Pandoc version) ```
-
-   ``` ::choosePandocMdFlavour:markdown_strict:``` (Pandoc version lss extensions for Gruber's original, Markdown.pl)
+   ``` ::choosePandocMdFlavour:markdown: (Pandoc version) ```  
+   ``` ::choosePandocMdFlavour:markdown_strict:``` (Pandoc version less extensions for Gruber's original, Markdown.pl)
    ``` ::choosePandocMdFlavour:markdown_phpextra: ``` (PHP Markdown Extra)  
    ``` ::choosePandocMdFlavour:markdown_mmd: ``` (MultiMarkdown)   
    ``` ::choosePandocMdFlavour:commonmark: ``` (CommonMark)  
@@ -41,6 +40,8 @@ asciidoctor-pdf.rb but this fails wi no output.
    ``` ::choosePandocMdFlavour:gfm: ``` (Github-Flavored Markdown)
    ``` ::choosePandocMdFlavour:markdown_github: ``` (deprecated GitHub-Flavored Markdown)
 
+#### Previewing Rmarkdown files.
+Rmardown is the only markdown that I have used when analysing data using the R app. Rmarkdown is Pandoc's version of markdown extended to include the requirements of R and knitr. For detailed information see https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown How well this app will render Rmarkdown I have never tried.
 
 
 ## What does not work
