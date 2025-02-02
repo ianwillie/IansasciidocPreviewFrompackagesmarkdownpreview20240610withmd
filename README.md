@@ -4,7 +4,7 @@ Ian's adaptation of pulsar's excellent package markdown-preview to preview ascii
 <kbd>ctrl-alt-shft-c</kbd> will preview as an asciidoc file with live update, <kbd>ctrl-alt-shft-g</kbd> will open in external browser falkon, <kbd>ctrl-alt-shft-s</kbd> save as pdf. See section What does work for precise details. It is very sensitive to configuration so read below and experiment. What does work When the cursor is in the text editor pane <kbd>ctrl-alt-shft-c</kbd> will try to render it as asciidoctor which may or not make sense. For example, a markdown file will be only partly rendered as expected.
 
 ## What is asciidoctor.js and how to install it
-Asciidoctor.js is supplied by Asciidortor.org and is a transpiled from the native Ruby source code asciidoctor.rb. For practcal purposes it is identical to the original Ruby code and the details can be found at https://github.com/asciidoctor/asciidoctor.js#quickstart. The syntax is similar to Markdown but can be used to write complex documents with detailed features including configuration, tables, diagnrams, code language highlighting and much more.
+Asciidoctor.js is supplied by Asciidortor.org and is a transpiled from the native Ruby source code asciidoctor.rb. For practcal purposes it is identical to the original Ruby code and the details can be found at ```https://github.com/asciidoctor/asciidoctor.js#quickstart```. The syntax is similar to Markdown but can be used to write complex documents with detailed features including configuration, tables, diagnrams, code language highlighting and much more.
 To check that it is installed and set up correctly on Linux follow the quickstart in the last link.
 
 The details of syntax can be found in these documents on asciidoctor.org:
@@ -21,12 +21,13 @@ The details of syntax can be found in these documents on asciidoctor.org:
 
 * [Asciidoctor.css](https://docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/) This package includes asciidoctor.css as the default stylesheet which is embedded in the html files generated for previewing adoc files. The stylesheet embedded or linked can be altered in asciidoctor configuration in the front matter, see the documentation.
 
-**Be sure to disable** atom-language-asciidoctor which is an atom package. It does some strange things, for example, if it is enabled may package will no longer open files with extensions: .txt, .adoc and possibly others occassionally like .ron.
-Others Atom packages for AsciiDoc should not be enables including: language-asciidoc,: Syntax highlighting and snippets for AsciiDoc & autocomplete-asciidoc. asciidoc-preview: Show a preview for the AsciiDoc has been fixed and should be OK but it is hoped that the current pacakage will replace that and be more resillient to changes in pulsar and its dependencies.
-asciidoc-image-helper: When pasting an image into an Asciidoc document, this package will paste clipboard image data as a file into a folder specified by the user.
-asciidoc-assistant: install Atom AsciiDoc basic packages with one package.
+## Before starting to test:
+**Be sure to disable** ```atom-language-asciidoctor``` which is an atom package. It does some strange things, for example, if it is enabled may package will no longer open files with extensions: .txt, .adoc and possibly others occasionally like .ron.  
+Other Atom packages for AsciiDoc should not be enables including: ```language-asciidoc```, ```asciidoc-image-helper```, ```asciidoc-assistant```.
 
-Add this to config.cson under core. It ensures that adoc & asciidoc files are treated as text not as YAML type files:
+```asciidoc-preview```: Is an  atom package which has been fixed and should be OK but the current pacakagemay be more resilient to changes in pulsar and its dependencies.  
+
+Add this to config.cson under core. I think that it ensures that adoc & asciidoc files are treated as text not as YAML type files:
 core:
 
 ```
@@ -60,6 +61,13 @@ core:
 ```
 --->
 
+# To preview an asciidoc file        
+To preview a file with cursor .adoc file press:
+  <kbd>ctrl-alt-shift-a</kbd>  
+(If the official pulsar mardown-preview package is enabled then <kbd>ctrl-shift-m</kbd> , will preview markdown files.)
+
+
+
 ## What does work
 
 <kbd>ctrl-alt-shft-c</kbd> will preview adoc type file   
@@ -68,6 +76,7 @@ core:
 <kbd>ctrl-shft-s</kbd> will save as html and show this source file in pulsar. Using node asciidoctor-web-pdf.js. (Also tried to run asciidoctor-pdf.rb but this fails wi no output.
 
 (If the official pulsar mardown-preview package is enabled then <kbd>ctrl-shift-m</kbd> , will preview markdown files. It  uses github md, I think.)
+
 
 ## Previewing markdown files.
   With cursor in an ordinary md file <kbd>ctrl-alt-shft-c</kbd> will preview as original pulsar markdown-preview github flavour.
@@ -84,13 +93,19 @@ core:
    ``` ::choosePandocMdFlavour:markdown_github: ``` (deprecated GitHub-Flavored Markdown)
 
 #### Previewing Rmarkdown files.
-Rmardown is the only markdown that I have experience of using when analysing data with the R programming language. Rmarkdown is Pandoc's version of markdown extended to include the requirements of R and knitr. For detailed information see https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown How well this app will render Rmarkdown I have never tried.
+Rmardown is the only markdown that I have much experience of using when analysing data with the R programming language. Rmarkdown uses Pandoc to render pages to HTML. It uses Pandoc's own version of markdown extended to include the requirements of R and knitr. For detailed information see https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown How well my app will render Rmarkdown I have never tried yet.
 
 
 ## What does not work
 Infront matter :backend:  is unlikely to work cost backends are written in ruby & js versions needed.
 
 Test in spec directory do not function because they are the originals from pulsar markdown-preview. When I know more about how to write these that will change.
+
+## Public Test Files
+There are a number of test files for you to try out in the <kbd>publicTestFiles</kbd> directory. <kbd>asciidoc_syntax_VShort.adoc</kbd> is a short file which will preview quickly to test your setup.
+<kbd>asciidoc_syntax_Long00.adoc</kbd> is along file that illustrates nearly all of the asciidoctor syntax. It includes links which reference absolute paths in my file system and these you will need to change to match yours.
+Your will need to set :sourcedir: to the absolute dir of your pulsar diretory at the start of the adoc file. somnething like this ```:sourcedir: /home/myname/myworkingdir/ ``` TODO: This uses an absolute path but I reckon there must be a way to use a relative link from the document working directoy in pulsar.
+There are media files at the end which may need their urls altered to suit your setup.
 
 ## How IansasciidocPreviewFrommarkdownpreviewnomd functions:  Note well - WORK IN PROGRESS
 Most of the code comes directly from pulsar markdown-preview. The main change is that when an adoc file is previewed the render function in render.js calls node asciidoctor.convert.js in renderAsciidoctor() instead of the original render(). render() is called with ```const domFragment = render(text, filePath)``` in render.js by exports.toHTML() & exports.toDOMFragment(). If a pandoc string is deteded then pandoc is called to render the file.
