@@ -81,16 +81,16 @@ To preview a file with cursor .adoc file press:
 ## Previewing markdown files.
   With cursor in an ordinary md file <kbd>ctrl-alt-shft-c</kbd> will preview as original pulsar markdown-preview github flavour.
 
-   If a single one of the codes exactly listed below is placed on a single line then <kbd>ctrl-alt-shft-c</kbd> will run pandoc for that md flavour.
+   If a single one of the codes exactly listed below is placed on a single line then <kbd>ctrl-alt-shft-c</kbd> will run pandoc for that md flavour. Putting one of these codes in the script identifies the flavour or md. There is no way to identiry the flavour of md from looking at the script, or so numberous sources point ou.
 
-   ``` ::choosePandocMdFlavour:markdown: (Pandoc version) ```  
-   ``` ::choosePandocMdFlavour:markdown_strict:``` (Pandoc version less extensions for Gruber's original, Markdown.pl)
-   ``` ::choosePandocMdFlavour:markdown_phpextra: ``` (PHP Markdown Extra)  
-   ``` ::choosePandocMdFlavour:markdown_mmd: ``` (MultiMarkdown)   
-   ``` ::choosePandocMdFlavour:commonmark: ``` (CommonMark)  
-   ``` ::choosePandocMdFlavour:commonmark_x: ```  (CommonMark with many pandoc extensions)
-   ``` ::choosePandocMdFlavour:gfm: ``` (Github-Flavored Markdown)
-   ``` ::choosePandocMdFlavour:markdown_github: ``` (deprecated GitHub-Flavored Markdown)
+   ``` :choosePandocMdFlavour:markdown: (Pandoc version) ```  
+   ``` :choosePandocMdFlavour:markdown_strict:``` (Pandoc version less extensions for Gruber's original, Markdown.pl)
+   ``` :choosePandocMdFlavour:markdown_phpextra: ``` (PHP Markdown Extra)  
+   ``` :choosePandocMdFlavour:markdown_mmd: ``` (MultiMarkdown)   
+   ``` :choosePandocMdFlavour:commonmark: ``` (CommonMark)  
+   ``` :choosePandocMdFlavour:commonmark_x: ```  (CommonMark with many pandoc extensions)
+   ``` :choosePandocMdFlavour:gfm: ``` (Github-Flavored Markdown)
+   ``` :choosePandocMdFlavour:markdown_github: ``` (deprecated GitHub-Flavored Markdown)
 
 #### Previewing Rmarkdown files.
 Rmardown is the only markdown that I have much experience of using when analysing data with the R programming language. Rmarkdown uses Pandoc to render pages to HTML. It uses Pandoc's own version of markdown extended to include the requirements of R and knitr. For detailed information see https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown How well my app will render Rmarkdown I have never tried yet.
@@ -105,7 +105,8 @@ Test in spec directory do not function because they are the originals from pulsa
 There are a number of test files for you to try out in the <kbd>publicTestFiles</kbd> directory. <kbd>asciidoc_syntax_VShort.adoc</kbd> is a short file which will preview quickly to test your setup.
 <kbd>asciidoc_syntax_Long00.adoc</kbd> is along file that illustrates nearly all of the asciidoctor syntax. It includes links which reference absolute paths in my file system and these you will need to change to match yours.
 Your will need to set :sourcedir: to the absolute dir of your pulsar diretory at the start of the adoc file. somnething like this ```:sourcedir: /home/myname/myworkingdir/ ``` TODO: This uses an absolute path but I reckon there must be a way to use a relative link from the document working directoy in pulsar.
-There are media files at the end which may need their urls altered to suit your setup.
+There are media files at the end which may need their urls altered to suit your setup.  
+At the there are not test files for the different flavours of md, but I am working on it.
 
 ## How IansasciidocPreviewFrommarkdownpreviewnomd functions:  Note well - WORK IN PROGRESS
 Most of the code comes directly from pulsar markdown-preview. The main change is that when an adoc file is previewed the render function in render.js calls node asciidoctor.convert.js in renderAsciidoctor() instead of the original render(). render() is called with ```const domFragment = render(text, filePath)``` in render.js by exports.toHTML() & exports.toDOMFragment(). If a pandoc string is deteded then pandoc is called to render the file.
